@@ -4,5 +4,13 @@
 
 <ion-content padding class="page1">
   <button (click)="signIn()">Sign in</button>
+    
+    <section>
+      logged: {{loggedUser?.displayName}}
+    </section>
+  
+  <button (click)="signOut()">Sign Out</button>
+  
+  <button (click) = "openUrl()"> open url</button>
 
 </ion-content>
