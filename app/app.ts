@@ -1,6 +1,8 @@
 import {App, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
+
+import {LoginPage} from './pages/login/login';
 import {FirebaseService} from './core/firebase.service';
 
 @App({
@@ -9,7 +11,7 @@ import {FirebaseService} from './core/firebase.service';
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 export class MyApp {
-  rootPage: any = TabsPage;
+  rootPage: any = LoginPage;
 
   constructor(platform: Platform) {
     // Initialize Firebase

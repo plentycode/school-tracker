@@ -1,0 +1,108 @@
+.login-page {
+    .hero {
+        min-height: 12%;
+    }
+
+     .login-content {
+         background-color: #B1EAF4;
+         background-image: url('../../img/background-stripes-small.jpg');
+
+         .login-controls {
+             position: relative;
+             display: flex;
+             flex-wrap: wrap;
+             flex-direction: column;
+             margin: 0 auto;
+             width: 90%;
+             min-height: 270px;
+             background-color: #fff;
+             box-shadow: 0px 0px 20px rgba(68, 68, 68, 0.72);
+          }
+
+         .buttons {
+             width: 100%;
+             padding: 10px;
+             .button {
+                 width: 100%;
+
+             }
+         }
+
+
+     }
+     .cloud {
+         background-image: url('../../img/cloud-200x109.png');
+         position: absolute;
+         width: 200px;
+         height: 109px;
+         top: 3%;
+         right: -5%;
+         display: flex;
+         align-content: center;
+         justify-content: center;
+         align-items: center;         
+         transition: all 0.3s ease-in-out;
+
+
+         &-button-left {
+             background-image: url('../../img/cloud-240x130.png');
+             width: 258px;
+             height: 124px;
+             bottom: -20%;
+             top: inherit;
+             left: -8%;
+             .button {
+                 font-size: 1.3em;
+                 .ion-logo-googleplus {
+                     color: #B71C1C;
+                 }
+                 .ion-logo-twitter {
+                    color: #1D9DB5;
+                }
+                 &.button-fab {
+                     position: static;
+                     width: 50px;
+                     height: 50px;
+                 }
+             }
+         }
+       }
+       .kite {
+           position: absolute;;
+           background-image: url('../../img/kite.png');
+           width: 224px;
+           height: 538px;
+           bottom: -15%;
+            right: -17%;
+            z-index: 2;
+            transition: all 0.3s ease-in-out;
+
+            transform: scale(0.3);
+            bottom: -54%;
+            @media screen and (min-height: 400px) {
+                transform: scale(0.4);
+                bottom: -50%;
+            }
+            @media screen and (min-height: 500px) {
+                transform: scale(0.5);
+                bottom: -40%;
+            }
+            @media screen and (min-height: 550px) {
+                transform: scale(0.7);
+                bottom: -28%;
+            }
+            @media screen and (min-height: 600px) {
+                transform: scale(1);
+                bottom: -15%;
+            }
+
+       }
+       .cloud-secondary {
+           background-image: url('../../img/cloud-secondary.png');
+           position: absolute;
+           width: 150px;
+           height: 109px;
+       }
+
+
+}
