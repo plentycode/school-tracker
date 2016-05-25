@@ -11,9 +11,9 @@
   <allow-intent href="sms:*"/>
   <allow-intent href="mailto:*"/>
   <allow-intent href="geo:*"/>
-  <allow-intent href="*.firebaseio.com" />
-  <allow-intent href="auth.firebase.com" />
-  <allow-intent href="school-tracker.firebaseapp.com" />
+  <allow-intent href="*.firebaseio.com"/>
+  <allow-intent href="auth.firebase.com"/>
+  <allow-intent href="school-tracker.firebaseapp.com"/>
   <platform name="android">
     <allow-intent href="market:*"/>
   </platform>
