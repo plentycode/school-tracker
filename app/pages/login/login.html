@@ -7,7 +7,7 @@
     <div class="cloud">
         <button clear class="sign-up">Sign Up</button>
     </div>
-    
+
     <section class="login-controls">
 
         <ion-item>
@@ -21,18 +21,24 @@
         </ion-item>
 
         <div class="buttons">
-            <button>Login</button>
+            <button (click)="userPassSignIn()">Login</button>
         </div>
+
+        <section>
+            <p>Access Token: {{loggedUser?.accessToken}}</p>
+            <p>Display Name: {{loggedUser?.displayName}}</p>
+            <p>Email: {{loggedUser?.email}}</p>
+        </section>
 
         <div class="cloud cloud-button-left">
             <button  fab clear >
-              <ion-icon name="logo-googleplus"></ion-icon>
+                <a (click)="googleSignIn()"><ion-icon name="logo-googleplus"></ion-icon></a>
             </button>
             <button  fab clear>
-              <ion-icon name="logo-facebook"></ion-icon>
+                <a  (click)="facebookSignIn()"><ion-icon name="logo-facebook"></ion-icon></a>
             </button>
             <button  fab clear>
-              <ion-icon name="logo-twitter"></ion-icon>
+                <a (click)="twitterSignIn()"><ion-icon name="logo-twitter"></ion-icon></a>
             </button>
         </div>
     </section>

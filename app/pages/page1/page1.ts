@@ -1,33 +1,51 @@
 import {Page} from 'ionic-angular';
-import {FirebaseService} from './../../core/firebase.service';
-import { Observable } from 'rxjs';
+import {FirebaseAuth, AngularFire, AuthProviders} from "angularfire2/angularfire2";
 
 @Page({
   templateUrl: 'build/pages/page1/page1.html',
 })
 export class Page1 {
   loggedUser: any;
-  constructor(private _firebaseService: FirebaseService) {
+  constructor(private  _angularFire: AngularFire) {
     this.loggedUser = null;
-
-    this._firebaseService.onAuthChanged.subscribe((user) => { this.onAuthChanged(user) })
-  }
-  public signIn() {
-    this._firebaseService.signIn();
   }
 
-  public signOut() {
-    this._firebaseService.signOut();
+  public googleSignIn() {
+    this._angularFire.auth.login({
+      provider:  AuthProviders.Google
+    }).then((authData) => {
+      this.loggedUser = authData.google;
+    });
+  }
+
+
+  public facebookSignIn() {
+    this._angularFire.auth.login({
+      provider:  AuthProviders.Facebook
+    }).then((authData) => {
+      this.loggedUser = authData.facebook;
+    });
+  }
+
+
+  public twitterSignIn() {
+    this._angularFire.auth.login({
+      provider:  AuthProviders.Twitter
+    }).then((authData) => {
+      this.loggedUser = authData.twitter;
+    });
+  }
+
+  public userPassSignIn() {
+    this._angularFire.auth.login({
+      provider:  AuthProviders.Password
+    }).then((authData) => {
+      this.loggedUser = authData.password;
+    });
+  }
+
+  public logout(){
+    this._angularFire.auth.logout();
   }
   
-  public openUrl () {
-    window.open('http://www.google.com', '_system');
-  }
-
-  private onAuthChanged(user: any) {
-    this.loggedUser = user;
-  }
-  
-  
-
 }

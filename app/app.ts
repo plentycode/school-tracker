@@ -1,13 +1,20 @@
 import {App, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
+import {FIREBASE_PROVIDERS, defaultFirebase, AuthProviders, AuthMethods, firebaseAuthConfig} from "angularfire2/angularfire2";
+import {LoginPage} from "./pages/login/login";
 
-import {LoginPage} from './pages/login/login';
-import {FirebaseService} from './core/firebase.service';
-
+declare var cordova: any;
 @App({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [FirebaseService],
+  providers: [
+    FIREBASE_PROVIDERS,
+    defaultFirebase('https://schooltracker.firebaseio.com'),
+    firebaseAuthConfig({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup,
+      remember: 'default',
+      scope: ['email']
+    })],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 export class MyApp {
@@ -21,6 +28,10 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+      document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady() {
+        window.open = cordova.InAppBrowser.open;
+      }
     });
   }
 }

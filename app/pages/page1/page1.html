@@ -3,14 +3,17 @@
 </ion-navbar>
 
 <ion-content padding class="page1">
-  <button (click)="signIn()">Sign in</button>
-    
+  <a (click)="googleSignIn()" data-pack="social">Google</a>
+  <a (click)="facebookSignIn()" data-pack="social">Facebook</a>
+  <a (click)="twitterSignIn()" data-pack="social">Twitter</a>
+  <a (click)="userPassSignIn()" data-pack="social">Passs</a>
+
     <section>
-      logged: {{loggedUser?.displayName}}
+      <p>Access Token: {{loggedUser?.accessToken}}</p>
+      <p>Display Name: {{loggedUser?.displayName}}</p>
+      <p>Email: {{loggedUser?.email}}</p>
     </section>
   
-  <button (click)="signOut()">Sign Out</button>
-  
-  <button (click) = "openUrl()"> open url</button>
+  <button (click)="logout()">Sign Out</button>
 
-</ion-content>
+</ion-content> 
