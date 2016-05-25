@@ -1,6 +1,6 @@
 interface IFirebase {
     initializeApp(config: any): void;
-    auth: () => any;
+    auth: any;
     database: () => any;
     storage: () => any;
 }
