@@ -5,8 +5,7 @@
     </section>
 
     <div class="cloud">
-        <button *ngIf="!showRegister" clear class="sign-up" (click)="showRegister = true">Sign Up</button>
-        <button *ngIf="showRegister" clear class="sign-up" (click)="showRegister = false">Back</button>
+        <button *ngIf="showRegister" clear class="sign-up-back" (click)="showRegister = false">Back to Login</button>
     </div>
 
     <section class="login-controls" *ngIf="!showRegister">
@@ -36,7 +35,7 @@
             </button>
         </div>
         <div class="board">
-            <a class="sign-up"> Sign Up</a>
+            <button *ngIf="!showRegister" clear class="sign-up" (click)="showRegister = true">Sign Up</button>
         </div>
     </section>
     <section class="login-controls" *ngIf="showRegister">
