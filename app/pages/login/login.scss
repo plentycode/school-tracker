@@ -14,19 +14,24 @@
              flex-direction: column;
              margin: 0 auto;
              width: 90%;
-             min-height: 270px;
+             min-height: 230px;
              background-color: #fff;
              box-shadow: 0px 0px 20px rgba(68, 68, 68, 0.72);
+             .item {
+                 padding-right: 16px;
+             }
+             .buttons {
+                 width: 100%;
+                 padding: 10px;
+                 text-align: right;
+                 .button {
+                    width: 40%;
+                    background-color: #FF8D4F;
+                 }
+             }
           }
 
-         .buttons {
-             width: 100%;
-             padding: 10px;
-             .button {
-                 width: 100%;
 
-             }
-         }
          .sign-up {
              color: #FFF880;
              box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1); //TODO: make this a mixin
