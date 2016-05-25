@@ -33,11 +33,13 @@
 
 
          .sign-up {
-             color: #FFF880;
-             box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1); //TODO: make this a mixin
+             color: #F1EB94;
              border-radius: 50%;
-             margin-left: 18px;
-             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.56);
+             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.56);
+             font-size: 2.2em;
+             font-style: normal;
+             transform: rotate(-10deg);
+            padding-top: 10px;
          }
 
 
@@ -114,6 +116,22 @@
            position: absolute;
            width: 150px;
            height: 109px;
+       }
+       .board {
+           background-image: url('../../img/board-200x182.png');
+           position: absolute;
+           width: 200px;
+           height: 182px;
+           bottom: -66%;
+           left: 4%;
+           top: inherit;
+           right: 0;
+           display: flex;
+           align-content: center;
+           justify-content: center;
+           align-items: center;
+           transition: all 0.3s ease-in-out;
+           transform: scale(0.5);
        }
 
 
