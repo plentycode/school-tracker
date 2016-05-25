@@ -5,23 +5,24 @@
     </section>
 
     <div class="cloud">
-        <button clear class="sign-up">Sign Up</button>
+        <button *ngIf="!showRegister" clear class="sign-up" (click)="showRegister = true">Sign Up</button>
+        <button *ngIf="showRegister" clear class="sign-up" (click)="showRegister = false">Back</button>
     </div>
 
-    <section class="login-controls">
+    <section class="login-controls" *ngIf="!showRegister">
 
         <ion-item>
             <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input #user type="text"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input #pass type="password"></ion-input>
         </ion-item>
 
         <div class="buttons">
-            <button (click)="userPassSignIn()">Login</button>
+            <button (click)="userPassSignIn(user.value, pass.value)">Login</button>
         </div>
         <div class="cloud cloud-button-left">
             <button  fab clear  (click)="googleSignIn()">
@@ -33,6 +34,26 @@
             <button  fab clear (click)="twitterSignIn()">
                 <ion-icon name="logo-twitter"></ion-icon>
             </button>
+        </div>
+    </section>
+    <section class="login-controls" *ngIf="showRegister">
+
+        <ion-item>
+            <ion-label floating>Mail</ion-label>
+            <ion-input #user type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input #pass type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Reenter Password</ion-label>
+            <ion-input #pass type="password"></ion-input>
+        </ion-item>
+
+        <div class="buttons">
+            <button (click)="createUser(user.value, pass.value);showRegister = false">Register</button>
         </div>
     </section>
 </ion-content>
