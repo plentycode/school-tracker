@@ -1,10 +1,10 @@
-<div class="kite"></div>
-<ion-content class="login-content">
+<!--div class="kite"></div-->
+<ion-content class="login-content" [class.bounceIn] = "isLoaded">
 
     <section class="hero">
     </section>
 
-    <div class="cloud">
+    <div class="cloud right" >
         <button *ngIf="showRegister" clear class="sign-up-back" (click)="showRegister = false">Back to Login</button>
     </div>
 
@@ -23,7 +23,7 @@
         <div class="buttons">
             <button (click)="userPassSignIn(user.value, pass.value)">Login</button>
         </div>
-        <div class="cloud cloud-button-left">
+        <div class="cloud left cloud-button-left">
             <button  fab clear  (click)="googleSignIn()">
                 <ion-icon name="logo-googleplus"></ion-icon>
             </button>

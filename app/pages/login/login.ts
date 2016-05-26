@@ -5,11 +5,16 @@ import {AlertsServices} from "../../core/alerts.services";
 @Page({
     templateUrl: 'build/pages/login/login.html',
 })
-export class LoginPage {
+export class LoginPage  {
     loggedUser: any;
+    isLoaded: boolean = false;
     constructor(private  _angularFire: AngularFire,
                 private _nav: NavController) {
         this.loggedUser = null;
+    }
+
+    ngOnInit() {
+        this.isLoaded = true;
     }
 
     public googleSignIn() {
@@ -48,7 +53,7 @@ export class LoginPage {
     public createUser(email: string, password: string) {
         this._angularFire.auth.createUser({
             email: email,
-            password: password  
+            password: password
         }).then((data: any)=>{
             let message = "the user has been created";
             console.log(message);
