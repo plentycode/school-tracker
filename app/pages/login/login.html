@@ -1,14 +1,13 @@
 <!--div class="kite"></div-->
-<ion-content class="login-content" [class.bounceIn] = "isLoaded">
+<ion-content class="login-content" [class.isLoaded] = "isLoaded">
 
     <section class="hero">
     </section>
 
-    <div class="cloud right" >
-        <button *ngIf="showRegister" clear class="sign-up-back" (click)="showRegister = false">Back to Login</button>
-    </div>
-
     <section class="login-controls" *ngIf="!showRegister">
+        <div class="cloud right" >
+            <button *ngIf="showRegister" clear class="sign-up-back" (click)="showRegister = false">Back to Login</button>
+        </div>
 
         <ion-item>
             <ion-label floating>Username</ion-label>
