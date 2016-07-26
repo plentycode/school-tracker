@@ -19,7 +19,7 @@ declare var IonicNative: any;
       storageBucket: "school-tracker.appspot.com",
     }),
     firebaseAuthConfig({
-      provider: AuthProviders.Twitter,
+      provider: AuthProviders.Google,
       method: AuthMethods.Redirect
     }),
     AlertsServices],

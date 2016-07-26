@@ -1,5 +1,6 @@
 import {Page, Alert, NavController } from 'ionic-angular';
 import {AngularFire, AuthProviders, AuthMethods, FirebaseAuthState} from "angularfire2/angularfire2";
+import {Facebook} from 'ionic-native';
 
 declare var Ionic: any;
 
@@ -21,23 +22,35 @@ export class LoginPage  {
     public googleSignIn() {
         this._angularFire.auth.login({
             provider:  AuthProviders.Google,
-            method: AuthMethods.Redirect  
+            method: AuthMethods.Redirect
         }).then((authData: FirebaseAuthState) => this.handleLogin(authData)).catch((error) => this.handleAuthErrors(error));
     }
 
-   
+
     public facebookSignIn() {
-        this._angularFire.auth.login({
-            provider:  AuthProviders.Facebook,
-            method: AuthMethods.Redirect  
-        }).then((authData: FirebaseAuthState) => this.handleLogin(authData)).catch((error) => this.handleAuthErrors(error));
+        Facebook.login(['email'])
+            .then((_response) => {
+                console.log(_response)
+
+                // IMPORTANT STEP !!
+                let creds = (<any>firebase.auth.FacebookAuthProvider).credential(_response.authResponse.accessToken);
+
+                this._angularFire.auth.login(creds,
+                    {
+                        provider: AuthProviders.Facebook,
+                        method: AuthMethods.OAuthToken,
+                        remember: 'default',
+                        scope: ['email'],
+                    })
+                    .then((authData:FirebaseAuthState) => this.handleLogin(authData)).catch((error) => this.handleAuthErrors(error));
+            });
     }
 
 
     public twitterSignIn() {
         this._angularFire.auth.login({
             provider:  AuthProviders.Twitter,
-            method: AuthMethods.Redirect  
+            method: AuthMethods.Redirect
         }).then((authData: FirebaseAuthState) => this.handleLogin(authData)).catch((error) => this.handleAuthErrors(error));
     }
 
@@ -52,14 +65,14 @@ export class LoginPage  {
     }
 
     public createUser(email: string, password: string) {
-            Ionic.Auth.signup({
-                'email': email,
-                'password': password
-            }).then((data: any)=>{
-                let message = "the user has been created";
-                console.log(message);
-                this.showAlert("Successful", message);
-            }, (error) => this.handleAuthErrors(error));  
+        Ionic.Auth.signup({
+            'email': email,
+            'password': password
+        }).then((data: any)=>{
+            let message = "the user has been created";
+            console.log(message);
+            this.showAlert("Successful", message);
+        }, (error) => this.handleAuthErrors(error));
 
     }
 
