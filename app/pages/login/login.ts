@@ -1,6 +1,7 @@
-import {Page, Alert, NavController} from 'ionic-angular';
+import {Page, Alert, NavController } from 'ionic-angular';
 import {AngularFire, AuthProviders, AuthMethods, FirebaseAuthState} from "angularfire2/angularfire2";
-import {AlertsServices} from "../../core/alerts.services";
+
+declare var Ionic: any;
 
 @Page({
     templateUrl: 'build/pages/login/login.html',
@@ -20,15 +21,15 @@ export class LoginPage  {
     public googleSignIn() {
         this._angularFire.auth.login({
             provider:  AuthProviders.Google,
-            method: AuthMethods.Popup
+            method: AuthMethods.Redirect  
         }).then((authData: FirebaseAuthState) => this.handleLogin(authData)).catch((error) => this.handleAuthErrors(error));
     }
 
-
+   
     public facebookSignIn() {
         this._angularFire.auth.login({
             provider:  AuthProviders.Facebook,
-            method: AuthMethods.Popup
+            method: AuthMethods.Redirect  
         }).then((authData: FirebaseAuthState) => this.handleLogin(authData)).catch((error) => this.handleAuthErrors(error));
     }
 
@@ -36,7 +37,7 @@ export class LoginPage  {
     public twitterSignIn() {
         this._angularFire.auth.login({
             provider:  AuthProviders.Twitter,
-            method: AuthMethods.Popup
+            method: AuthMethods.Redirect  
         }).then((authData: FirebaseAuthState) => this.handleLogin(authData)).catch((error) => this.handleAuthErrors(error));
     }
 
@@ -51,14 +52,15 @@ export class LoginPage  {
     }
 
     public createUser(email: string, password: string) {
-        this._angularFire.auth.createUser({
-            email: email,
-            password: password
-        }).then((data: any)=>{
-            let message = "the user has been created";
-            console.log(message);
-            this.showAlert("Successful", message);
-        })
+            Ionic.Auth.signup({
+                'email': email,
+                'password': password
+            }).then((data: any)=>{
+                let message = "the user has been created";
+                console.log(message);
+                this.showAlert("Successful", message);
+            }, (error) => this.handleAuthErrors(error));  
+
     }
 
     private handleLogin(authData: FirebaseAuthState) {
