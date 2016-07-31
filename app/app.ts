@@ -4,12 +4,18 @@ import {FIREBASE_PROVIDERS, defaultFirebase, AuthProviders, AuthMethods, firebas
 import {LoginPage} from "./pages/login/login";
 import {AlertsServices} from "./core/alerts.services";
 import {Platform, ionicBootstrap} from 'ionic-angular';
+import {CloudSettings} from '@ionic/cloud-angular';
+//https://developers.google.com/cloud-messaging/
 
 declare var cordova: any;
 declare var IonicNative: any;
-
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'YOUR-APP-ID'
+  }
+};
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  templateUrl: 'build/app.html',
   providers: [
     FIREBASE_PROVIDERS,
     defaultFirebase({
@@ -19,7 +25,7 @@ declare var IonicNative: any;
       storageBucket: "school-tracker.appspot.com",
     }),
     firebaseAuthConfig({
-      provider: AuthProviders.Google,
+      provider: AuthProviders.Password,
       method: AuthMethods.Redirect
     }),
     AlertsServices],
@@ -36,4 +42,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp, [provideCloud(cloudSettings)]);

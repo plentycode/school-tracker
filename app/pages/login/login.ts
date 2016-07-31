@@ -1,12 +1,13 @@
 import {Page, Alert, NavController } from 'ionic-angular';
 import {AngularFire, AuthProviders, AuthMethods, FirebaseAuthState} from "angularfire2/angularfire2";
 import {Facebook} from 'ionic-native';
-
+//https://github.com/driftyco/ionic-cloud-angular
 declare var Ionic: any;
 
 @Page({
     templateUrl: 'build/pages/login/login.html',
 })
+
 export class LoginPage  {
     loggedUser: any;
     isLoaded: boolean = false;
@@ -77,6 +78,7 @@ export class LoginPage  {
     }
 
     private handleLogin(authData: FirebaseAuthState) {
+        console.log("entra a login");
         this.loggedUser = authData[AuthProviders[authData.provider].toLowerCase()];
         this.showAlert("Successful",
             `DisplayName: ${this.loggedUser.displayName || this.loggedUser.email}
@@ -84,6 +86,7 @@ export class LoginPage  {
     }
 
     private handleAuthErrors(error) {
+        console.log("entra a error");
         console.log(error);
         this.showAlert("Error", error);
     }
