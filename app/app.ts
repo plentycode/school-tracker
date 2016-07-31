@@ -4,7 +4,7 @@ import {FIREBASE_PROVIDERS, defaultFirebase, AuthProviders, AuthMethods, firebas
 import {LoginPage} from "./pages/login/login";
 import {AlertsServices} from "./core/alerts.services";
 import {Platform, ionicBootstrap} from 'ionic-angular';
-import {CloudSettings} from '@ionic/cloud-angular';
+import {CloudSettings, provideCloud} from '@ionic/cloud-angular';
 //https://developers.google.com/cloud-messaging/
 
 declare var cordova: any;
